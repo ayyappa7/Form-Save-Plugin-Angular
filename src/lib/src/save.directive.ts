@@ -1,10 +1,10 @@
 import { Directive,ElementRef,Input,QueryList,ViewChildren,OnInit } from '@angular/core';
 
 @Directive({
-    selector: '[appSave]'
+    selector: '[saveField]'
 })
 export class SaveDirective implements OnInit{
-    @Input('appSave') appSave: string;
+    @Input('saveField') saveField: string;
     @Input('interval') interval: number;
     @Input('userKey') userKey: string ;
     constructor(private el:ElementRef) {
@@ -17,7 +17,7 @@ export class SaveDirective implements OnInit{
         }else{
             if(localStorage.getItem(this.userKey)!=null){
                 let map=JSON.parse(localStorage.getItem(this.userKey))
-                map[this.appSave]=btoa("")
+                map[this.saveField]=btoa("")
                 localStorage.setItem(this.userKey,JSON.stringify(map))
             }
         }
@@ -28,17 +28,17 @@ export class SaveDirective implements OnInit{
         if(this.el.nativeElement.value!=""){
             let map={}
             if(localStorage.getItem(this.userKey)==null){
-                map[this.appSave]=btoa(this.el.nativeElement.value);
+                map[this.saveField]=btoa(this.el.nativeElement.value);
                 // console.log(map)
                 localStorage.setItem(this.userKey,JSON.stringify(map))
             }else{
                 map=JSON.parse(localStorage.getItem(this.userKey))
-                map[this.appSave]=btoa(this.el.nativeElement.value);
+                map[this.saveField]=btoa(this.el.nativeElement.value);
                 localStorage.setItem(this.userKey,JSON.stringify(map))
                 // console.log(map)
             }
         }
-        // localStorage.setItem(this.appSave,this.el.nativeElement.value)
+        // localStorage.setItem(this.saveField,this.el.nativeElement.value)
     }
 
 
@@ -46,13 +46,13 @@ export class SaveDirective implements OnInit{
         console.log(" restored")
         if(JSON.parse(localStorage.getItem(this.userKey))!=null) {
             let map = JSON.parse(localStorage.getItem(this.userKey))
-            if(map[this.appSave]!=null){}
+            if(map[this.saveField]!=null){}
             {
-                let val = atob(map[this.appSave]);
+                let val = atob(map[this.saveField]);
                 this.el.nativeElement.value = val;
             }
         }
-            // this.el.nativeElement.value=localStorage.getItem(this.appSave);
+            // this.el.nativeElement.value=localStorage.getItem(this.saveField);
     }
 
 }

@@ -15,8 +15,8 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "ngx-tabbed-input.js",
-    "flatModuleId": "ngx-tabbed-input",
+    "flatModuleOutFile": "form-save-plugin.js",
+    "flatModuleId": "form-save-plugin",
     "genDir": "../../out-tsc/lib-gen-dir/"
   }
 }

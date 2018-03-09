@@ -7,6 +7,6 @@ import {SaveDirective} from './src';
     declarations: [SaveDirective],
     exports: [SaveDirective]
 })
-export class SaveDirective {
+export class SaveModule {
 }
 
