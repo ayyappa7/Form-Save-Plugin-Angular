@@ -1,4 +1,4 @@
-import { Directive,ElementRef,Input,QueryList,ViewChildren,OnInit } from '@angular/core';
+import {Directive, ElementRef, Input, QueryList, ViewChildren, OnInit, EventEmitter, Output} from '@angular/core';
 
 @Directive({
     selector: '[saveField]'
@@ -7,6 +7,7 @@ export class SaveDirective implements OnInit{
     @Input('saveField') saveField: string;
     @Input('interval') interval: number;
     @Input('userKey') userKey: string ;
+    @Output() onSave = new EventEmitter< string>()
     constructor(private el:ElementRef) {
     }
     ngOnInit() {
@@ -24,7 +25,7 @@ export class SaveDirective implements OnInit{
     }
 
     save(){
-        console.log("saved")
+        this.onSave.emit("saved");
         if(this.el.nativeElement.value!=""){
             let map={}
             if(localStorage.getItem(this.userKey)==null){
@@ -43,7 +44,7 @@ export class SaveDirective implements OnInit{
 
 
     restore( ){
-        console.log(" restored")
+        this.onSave.emit("saved");
         if(JSON.parse(localStorage.getItem(this.userKey))!=null) {
             let map = JSON.parse(localStorage.getItem(this.userKey))
             if(map[this.saveField]!=null){}

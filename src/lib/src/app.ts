@@ -10,10 +10,10 @@ import { BrowserModule } from '@angular/platform-browser';
         <h1>Form Save Directive</h1>
 
 	<div>
-  		<input interval=10 saveField="1" userKey="k1"><br><br><br>
- 		<input interval=10 saveField="2" userKey="k1"> <br><br><br>
- 		<input interval=10 saveField="3" userKey="k1"><br><br><br> 
- 		<input interval=10 saveField="4" userKey="k1"> 
+  		<input interval=10 saveField="1" userKey="k1" (onSave)="onSave($event)"><br><br><br>
+ 		<input interval=10 saveField="2" userKey="k1" (onSave)="onSave($event)"> <br><br><br>
+ 		<input interval=10 saveField="3" userKey="k1" (onSave)="onSave($event)"><br><br><br> 
+ 		<input interval=10 saveField="4" userKey="k1" (onSave)="onSave($event)"> 
  		<!-- <button (click)="saveAll()">save</button> -->
  		<button (click)="restore()">Restore</button>
 	</div>
@@ -27,6 +27,9 @@ export class App {
     // }
     restore(){
         this.saveDirs.forEach( p => p.restore())
+    }
+    onSave( ack : string){
+        console.log(ack);
     }
 
 }
