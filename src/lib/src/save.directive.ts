@@ -47,7 +47,7 @@ export class SaveDirective implements OnInit{
         this.onSave.emit("Restored");
         if(JSON.parse(localStorage.getItem(this.userKey))!=null) {
             let map = JSON.parse(localStorage.getItem(this.userKey))
-            if(map[this.saveField]!=null){}
+            if(map[this.saveField]!=null )
             {
                 let val = atob(map[this.saveField]);
                 this.el.nativeElement.value = val;
