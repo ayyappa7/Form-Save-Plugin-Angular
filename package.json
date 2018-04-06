@@ -1,6 +1,6 @@
 {
   "name": "form-save-plugin",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": " Directive to auto save input field",
   "main": "index.js",
   "directories": {
